@@ -1,0 +1,67 @@
+body {
+    background: #000;
+    margin: 0
+}
+.el{
+    margin: auto;
+}
+#menu {
+    display: grid;
+    grid-auto-flow: column;
+    margin: auto;
+    font-size: 26px;
+    color: #00b107;
+    font-family: sans-serif;
+    background: #222;
+}
+
+.keybord {
+    width: 750px;
+    height: 200px;
+    margin: auto;
+    position: relative;
+}
+
+.keybordImg {
+    background-image: url("k.png");
+    background-size: cover;
+}
+
+#fon {
+    position: absolute;
+    background-color: gray;
+}
+
+.fonActiv {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    visibility: hidden;
+}
+
+#text {
+    color: white;
+    font-family: 'Century Gothic', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 30px;
+    padding: 10px 30px 0 30px;
+    overflow: auto;
+    position: relative;
+    line-height: 35px;
+}
+
+#log{
+    font-size: 50px;
+}
+#a {
+    opacity: 40%;
+}
+
+#b {
+    text-decoration: underline;
+}
+
+#c {
+    opacity: 80%;
+}
