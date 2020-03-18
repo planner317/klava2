@@ -69,7 +69,7 @@ function pressDown(e) {
 	console.log(key);
 	if (key == "Enter") key = "\n"
 
-	if (key.length > 3) return false
+	if (key.length > 1) return
 	if (key === text[index]) {
 		if (flagTime) {
 			count = Date.now();
@@ -151,7 +151,7 @@ function autoScrolling() {
 // события пауза при отставании 
 let flag = true, nStop = 0, inter2;
 inter2 = setInterval(() => {
-	if (sound.currentTime.toFixed(2) == playlist.stop[nStop].music) {
+	if (sound.currentTime.toFixed(1) == playlist.stop[nStop].music) {
 		if (index < playlist.stop[nStop].text - 10) sound.pause()
 		else {
 			sound.play();
