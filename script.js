@@ -44,12 +44,20 @@ totalSym.innerText = "всего символов: " + text.length
 document.getElementById("volume").onchange = (e) => sound.volume = e.target.value
 setSpeed.onmousedown = () => { interval = setInterval(setConfing) }
 setSpeed.onmouseup = () => clearInterval(interval)
+
 function setConfing() {
 	sound.playbackRate = setSpeed.value
 	getSpeed.innerHTML = sound.playbackRate.toFixed(2)
-	symMin.innerHTML = Math.floor(text.length / (playlist.end / 60) * sound.playbackRate) + " символов/мин"
+	let s = Math.floor(text.length / ((playlist.end - playlist.start) / 60) * sound.playbackRate)
+	////////       кол-во символов / (            кол-во минут            ) * скорость где 1 это 100% 
+	symMin.innerHTML = s + simvolMin(s)
 }
 
+function simvolMin(s) {
+	if (s % 10 == 1) return " символ/минуту"
+	if (s % 10 == 2 || s % 10 == 3 || s % 10 == 4) return " символа/минуту"
+	return " символов/минуту"
+}
 window.onkeydown = pressDown;
 setConfing()
 showNextKey();
@@ -88,7 +96,7 @@ function pressDown(e) {
 			let time = Date.now() - count;
 			let speedFin = Math.floor(text.length / (time / 60 / 1000))
 			keybord.remove()
-			log.innerHTML = `<x style='color:green'>ваша скорость ${speedFin} символов/минуту<br></x><x style='color:red'>ошибки: ${error}</x>`
+			log.innerHTML = `<x style='color:green'>ваша скорость ${speedFin + simvolMin(speedFin)}<br></x><x style='color:red'>ошибки: ${error}</x>`
 		} else {
 			// дает кообдинаты клавиши на вирт.клавиатуре
 			showNextKey();
