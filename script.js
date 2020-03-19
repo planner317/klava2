@@ -57,6 +57,7 @@ showNextKey();
 function music() {
 	let music = document.createElement("audio")
 	music.src = playlist.urlSound
+	music.currentTime = playlist.start
 	music.volume = 0.2
 	document.body.append(music)
 	return music
