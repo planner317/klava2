@@ -9,6 +9,7 @@ let b = document.getElementById('b')
 let c = document.getElementById('c')
 let setSpeed = document.getElementById('setSpeed')
 let getSpeed = document.getElementById('getSpeed')
+let setVolume = document.getElementById("volume")
 let symMin = document.getElementById('symMin')
 let totalSym = document.getElementById('totalSym')
 let err = document.querySelectorAll('[src^="error/e"]')
@@ -17,7 +18,7 @@ let posKey;
 let eng = [
 	[`\`~`, `1!`, `2@`, `3#`, `4$`, `5%`, `6^`, `7&`, `8*`, `9(`, `0)`, `-_`, `+=`],
 	['Qq', `Ww`, `Ee`, `Rr`, `Tt`, `Yy`, `Uu`, `Ii`, `Oo`, `Pp`, `[`, `}]`, `\\|`],
-	[`Aa`, `Ss`, `Dd`, `Ff`, `Gg`, `Hh`, `Jj`, `Kk`, `Ll`, `:;`, `"'`],
+	[`Aa`, `Ss`, `Dd`, `Ff`, `Gg`, `Hh`, `Jj`, `Kk`, `Ll`, `:;`, `"'`, `\n`],
 	[`Zz`, `Xx`, `Cc`, `Vv`, `Bb`, `Nn`, `Mm`, `<,`, `>.`, `?/`]
 ]
 let rus = [
@@ -41,7 +42,7 @@ let sound = music()
 c.innerText = text
 totalSym.innerText = "всего символов: " + text.length
 
-document.getElementById("volume").onchange = (e) => sound.volume = e.target.value
+setVolume.onchange = () => sound.volume = setVolume.value
 setSpeed.onmousedown = () => { interval = setInterval(setConfing) }
 setSpeed.onmouseup = () => clearInterval(interval)
 
@@ -66,7 +67,8 @@ function music() {
 	let music = document.createElement("audio")
 	music.src = playlist.urlSound
 	music.currentTime = playlist.start
-	music.volume = 0.2
+	setVolume.value =  playlist.volume
+	music.volume = setVolume.value
 	document.body.append(music)
 	return music
 }
@@ -76,7 +78,7 @@ function music() {
 function pressDown(e) {
 	let key = e.key;
 	console.log(key);
-	if (key == "Enter") key = "\n"
+	if (e.key == "Enter") key = "\n"
 
 	if (key.length > 1) return
 	if (key === text[index]) {
@@ -160,7 +162,7 @@ function autoScrolling() {
 // события пауза при отставании 
 let flag = true, nStop = 0, inter2;
 inter2 = setInterval(() => {
-	if (sound.currentTime.toFixed(1) == playlist.stop[nStop].music) {
+	if (sound.currentTime.toFixed(1) >= playlist.stop[nStop].music) {
 		if (index < playlist.stop[nStop].text - 10) sound.pause()
 		else {
 			sound.play();
