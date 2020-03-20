@@ -65,3 +65,16 @@ body {
 #c {
     opacity: 80%;
 }
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #888;
+}
+::-webkit-scrollbar{
+    background: #222;
+}

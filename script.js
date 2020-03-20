@@ -76,12 +76,13 @@ function music() {
 
 
 function pressDown(e) {
-	let key = e.key;
+	let key;
+	key = e.key;
 	console.log(key);
 	if (e.key == "Enter") key = "\n"
 
 	if (key.length > 1) return
-	if (key === text[index]) {
+	if (key === text[index] || key == " " && text[index] == "\n") {
 		if (flagTime) {
 			count = Date.now();
 			flagTime = 0;
