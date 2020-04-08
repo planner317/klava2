@@ -164,7 +164,7 @@ function autoScrolling() {
 let flag = true, nStop = 0, inter2;
 inter2 = setInterval(() => {
 	if (sound.currentTime.toFixed(1) >= playlist.stop[nStop].music) {
-		if (index < playlist.stop[nStop].text - 10) sound.pause()
+		if (index < playlist.stop[nStop].text - playlist.pause) sound.pause()
 		else {
 			sound.play();
 			nStop++

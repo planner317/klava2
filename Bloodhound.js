@@ -22,6 +22,7 @@ playlist.stop=[
     {music:42, text: 444 },
     {music:48.4, text: 492 },
 ];
+playlist.pause = 0
 playlist.volume = 0.7
 playlist.start = 0
 playlist.end = 53     // длина секунд до последей буквы текста
